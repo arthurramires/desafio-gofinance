@@ -1,7 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+}
+
+interface LinkProps {
+  isSelected: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -15,22 +19,28 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+`;
 
-    nav {
-      a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 16px;
-        transition: opacity 0.2s;
+export const Nav = styled.div<LinkProps>`
+  border: 2px solid #5636d3;
+  ${(props) =>
+    props.isSelected &&
+    css`
+      border-bottom-color: #ff872c;
+    `}
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: opacity 0.2s;
 
-        & + a {
-          margin-left: 32px;
-        }
+    & + a {
+      margin-left: 32px;
+    }
 
-        &:hover {
-          opacity: 0.6;
-        }
-      }
+    &:hover {
+      opacity: 0.6;
     }
   }
 `;
